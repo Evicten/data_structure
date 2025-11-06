@@ -1,0 +1,5 @@
+# Ignore all PNG images
+*.png
+
+# Ignore all NumPy array files
+*.npy

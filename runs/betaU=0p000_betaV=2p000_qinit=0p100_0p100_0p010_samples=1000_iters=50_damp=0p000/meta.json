@@ -1,0 +1,22 @@
+{
+  "beta_u": 0,
+  "beta_v": 2,
+  "q_init": [
+    [
+      0.1,
+      0.01
+    ],
+    [
+      0.01,
+      0.1
+    ]
+  ],
+  "samples": 1000,
+  "iters": 50,
+  "damping": 0.0,
+  "modes": [
+    "replica",
+    "rBP"
+  ],
+  "note": "Global params constant across all (gamma, delta) and modes."
+}
