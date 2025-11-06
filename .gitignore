@@ -1,5 +1,36 @@
-# Ignore all PNG images
-*.png
+# --- Python build and cache ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
 
-# Ignore all NumPy array files
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Jupyter/IPython checkpoints ---
+.ipynb_checkpoints/
+
+# --- Experiment output ---
+amp_runs/
+runs/
+outputs/
+results/
+logs/
+
+# --- Generated data and plots ---
 *.npy
+*.npz
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# --- System files ---
+.DS_Store
+Thumbs.db
+
+# --- Editor/project settings ---
+.vscode/
+.idea/
