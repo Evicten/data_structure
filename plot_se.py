@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 # ======= USER SETTINGS (edit these by hand) =======
+DATE = "20251210"
 
 # --- SE (state evolution) parameters ---
 SE_MODE = "replica"   # or "rBP"
-SE_QINIT = np.array([[0.90, 0.10],
-                     [0.10, 0.90]])
-SE_SAMPLES = 1000
+SE_QINIT = np.array([[0.001, 0.0001],
+                     [0.0001, 0.001]])
+SE_SAMPLES = 10000
 SE_ITERS = 50
 SE_DAMP = 0.3
 
@@ -22,10 +23,10 @@ BETA_U = 1.0
 BETA_V = 2.0
 
 # ======= OUTPUT FIGURE PATH (auto-generated) =======
-TITLE = "State Evolution — Overlaps vs α (u, v, off-diag)"
+TITLE = "State Evolution — Overlaps vs α (u, v, off-diag) Correlated"
 FIG_BASE = Path("figures")
 FIG_BASE.mkdir(parents=True, exist_ok=True)
-XLIM = 15
+XLIM = 10
 
 # ===================================================
 
@@ -36,7 +37,7 @@ def alabel3(x: float, places: int = 3) -> str:
 
 # ======= SE PATH GENERATION =======
 
-SE_BASE = Path("runs")
+SE_BASE = Path("runs") / DATE
 SE_QTAG = f"qinit={alabel3(SE_QINIT[0,0])}_{alabel3(SE_QINIT[1,1])}_{alabel3(SE_QINIT[0,1])}"
 SE_TOP = SE_BASE / "_".join([
     f"betaU={alabel3(BETA_U)}",
@@ -121,6 +122,7 @@ def main():
     plt.plot(a_se, u_se, 'o-', markersize=3, label=r'$q_{11}$')
     plt.plot(a_se, v_se, 'o-', markersize=3, label=r'$q_{22}$')
     plt.plot(a_se, uv_se, 'o-', markersize=3, label=r'$q_{12}$')
+    # plt.axvline(x=26.25, linestyle='--', linewidth=2, color='black')  # 1st order PT
 
     plt.title(TITLE)
     plt.xlabel(r"$\alpha = n/d$")

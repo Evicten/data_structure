@@ -114,7 +114,7 @@ fig_tag = "_".join(fig_tag_parts)
                 
 
 # Final path (you can change prefix if you want)
-SAVE_PNG = FIG_BASE / f"compare_se_amp_{fig_tag}.png"
+SAVE_PNG = FIG_BASE / f"{fig_tag}.png"
 
 
 

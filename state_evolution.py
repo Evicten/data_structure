@@ -59,11 +59,11 @@ def q_hat_func_MCMC_replica(alpha, beta, q, samples, gamma, delta, eps=1e-6):
     for _ in range(samples):
         Xi = np.random.normal(0,1, 2)
         omega = sqrt_q @ Xi
-        Zout = Z_out(beta_u = beta_u, beta_v= beta_v, gamma= gamma, delta = delta, beta_tilde_v = beta_tilde_v, y = 1, omega = omega, M = M, N = N, a = a, d = d)
+        Zout = Z_out(beta_u = beta_u, beta_v= beta_v, gamma= gamma, delta = delta, beta_tilde_v = beta_tilde_v, y = 1, omega = omega, M = M, N = N, a = a, d = d) 
         fout = f_out(beta_u = beta_u, beta_v= beta_v, gamma= gamma, delta = delta, beta_tilde_v = beta_tilde_v, gamma_matrix = gamma_mat, y = 1, omega = omega, N = N, a = a, d = d)
         expectation_xi += Zout*np.outer(fout, fout)
 
-    q_hat = alpha * (expectation_xi / samples) 
+    q_hat = 2*alpha * (expectation_xi / samples) #added the 2 to remove the half noise for discrimination task
 
     return q_hat
 
